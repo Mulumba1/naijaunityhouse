@@ -1,0 +1,55 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+    
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-mb-3 col-md-12">
+                <div class="text-center"><h1>Login Page</h1></div>
+                <form action="" method="post">
+                    {{ form.csrf_token }}
+                   <div class="form-group">
+                       {{form.username.label(class="form-control-label")}}
+                       {{form.username(class="form-control")}}
+                        
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {{form.email(class="form-control")}}
+                        <span style="color: red;">
+                            {% if form.email.errors%}
+                                {% for error in form.email.errors%}
+                                    {{error}}
+                                {%endfor%}
+                            {%endif%}
+                        </span>
+                       </div>
+                    <div class="form-group">
+                        {{form.password.label(class="form-control-label")}}
+                        {{form.password(class="form-control")}}
+                       </div>
+                    <div class="form-group">
+                        {{form.confirm_password.label(class="form-control-label")}}
+                        {{form.confirm_password(class="form-control")}}
+                        <span style="color: red;">
+                            {% if form.confirm_password.errors%}
+                                {% for error in form.confirm_password.errors%}
+                                    {{error}}
+                                {%endfor%}
+                            {%endif%}
+                    </div>
+
+                    <div class="form-group">
+                    {{form.submit(class="form-control btn btn-danger")}}
+
+                   </div>
+   
+   
+                </form>
+    
+            </div>
+    
+        </div>
+   </div>
+{% endblock %}

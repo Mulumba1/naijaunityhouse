@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Home Page</title>
+
+   
+
+    <!-- CSS FILES -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font_awesome/css/all.css') }}" rel="stylesheet">
+<style>
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+
+
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(25%);
+    }
+    
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-25%);
+    }
+}
+
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
+}
+
+
+</style>
+</head>
+<!-- <div class="container-fluid"> -->
+<header class="site-header bg-dark">
+  <div class="container">
+      <div class="row">
+
+          <div class="col-lg-8 col-12 d-flex gap-4">
+              <p class="d-flex me-4 mb-0">
+                  <i class="fas fa-map-marker-alt fa-2x"></i>&nbsp;&nbsp;
+                  No 10 Beauty Odiaka street Lekki, Lagos Nigeria
+              </p>
+
+              <p class="d-flex mb-0">
+                  
+                  <i class="fas fa-envelope fa-2x"></i>&nbsp;&nbsp;
+                  <a href="mailto:info@naijaunityforum.com">
+                      info@naijaunityforum.com 
+                  </a>
+                  
+              </p>
+              <p class="d-flex mb-0">
+                  
+                  <i class="fas fa-phone fa-2x"></i>&nbsp;&nbsp;
+                  <a href="tel:+2348039700390">
+                      +2348039700390 
+                  </a>
+                  
+              </p>
+              
+          </div>
+
+          <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+              <ul class="social-icon">
+                  <li class="social-icon-item">
+                      
+                      <a href="#" class="social-icon-link"><i class="fab fa-twitter fa-2x"></i></a>
+                  </li>
+
+                  <li class="social-icon-item">
+                      <a href="#" class="social-icon-link"><i class="fab fa-facebook fa-2x"></i></a>
+                  </li>
+
+                  <li class="social-icon-item">
+                      <a href="#" class="social-icon-link"><i class="fab fa-instagram fa-2x"></i></a>
+                  </li>
+
+                  <li class="social-icon-item fa-2x">
+                      <a href="#" class="social-icon-link"><i class="fab fa-youtube fa-2x"></i>
+                      </a>
+                  </li>
+
+                  <li class="social-icon-item">
+                      <a href="#" class="social-icon-link"><i class="fab fa-whatsapp fa-2x"></i></a>
+                  </li>
+              </ul>
+          </div>
+
+      </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-success shadow-lg">
+  <div class="container">
+      <a class="navbar-brand" href="index.html">
+          <img src="/static/images/pix10.png" class="logo img-fluid rounded-circle" alt="">&nbsp;&nbsp;
+          <span class="text-white">
+              Naija Unity Forum
+              <small>Initiative for Fostering Unity in our diversity</small>
+          </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a class="nav-link click-scroll text-white" href="/">Home</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link click-scroll text-white" href="#section_2">About</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link click-scroll text-white" href="#section_3">Team</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link click-scroll text-white" href="/volunteer/">Volunteer</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link click-scroll text-white" href="#section_4">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link click-scroll text-white" href="/contact/">Contact Us</a>
+              </li>
+
+
+              <li class="nav-item ms-3">
+                 <a class="nav-link custom-btn custom-border-btn btn-danger" href="/donate/">Donate</a> 
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock content %}
+
+
+<footer class="site-footer bg-success">
+  <div class="container bg-success">
+      <div class="row">
+          <div class="col-lg-3 col-12 mb-4">
+              <img src="/static/images/pix10.png" class="logo img-fluid rounded-circle" alt="">
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12 mb-4">
+              <h5 class="site-footer-title mb-3">Quick Links</h5>
+
+              <ul class="footer-menu">
+                  <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+
+                  <li class="footer-menu-item"><a href="#" class="footer-menu-link">Newsroom</a></li>
+
+                  <li class="footer-menu-item"><a href="#" class="footer-menu-link">Causes</a></li>
+
+                  <li class="footer-menu-item"><a href="#" class="footer-menu-link">Become a volunteer</a></li>
+
+                  <li class="footer-menu-item"><a href="#" class="footer-menu-link">Partner with us</a></li>
+              </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12 mx-auto">
+              <h5 class="site-footer-title mb-3">Contact Infomation</h5>
+
+              <p class="text-white d-flex mb-2">
+                  <i class="fas fa-phone "></i>&nbsp;&nbsp;
+                  <a href="tel:+2348039700390" class="text-white">
+                  +2348039700390 
+                  </a>
+              </p>
+
+              <p class="text-white d-flex">
+                  <i class="fas fa-envelope "></i>&nbsp;&nbsp;
+                   <a href="mailto:info@naijaunityforum.com" class="text-white">
+                  info@naijaunityforum.com 
+                  </a>
+              </p>
+
+              <p class="text-white d-flex mt-3">
+                  <i class="fas fa-map-marker-alt "></i>&nbsp;&nbsp;
+              No 10 Beauty Odiaka street Lekki, Lagos Nigeria
+              </p>
+
+              <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+          </div>
+      </div>
+  </div>
+
+  <div class="site-footer-bottom bg-dark">
+      <div class="container">
+          <div class="row">
+
+              <div class="col-lg-6 col-md-7 col-12">
+                  <p class="mt-4 text-center text-white">Copyright &copy; Naija Unity House <span id="year"></span>
+                  Designed by: <a href="" target="_blank">Mulumba +2347069741483</a></p>
+                  
+              </div>
+
+              <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-end  mx-auto ">
+                  <ul class="social-icon d-flex gap-4">
+                      <a href=""><i class="fab fa-twitter fa-2x"></i></a>
+                      <a href=""><i class="fab fa-facebook fa-2x"></i></a>
+                      <a href=""><i class="fab fa-instagram fa-2x"></i></a>
+                      <a href=""><i class="fab fa-linkedin fa-2x"></i>
+                      </a>
+                     
+                  </ul>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/click-scroll.js"></script>
+<script src="/static/js/counter.js"></script>
+<script src="/static/js/custom.js"></script>
+
+<script type="text/JavaScript">
+ document.getElementById("year").innerHTML = new Date().getFullYear();
+
+</script>
+<script type="text/javascript">
+ let items = document.querySelectorAll('.carousel .carousel-item')
+
+items.forEach((el) => {
+const minPerSlide = 4
+let next = el.nextElementSibling
+for (var i=1; i<minPerSlide; i++) {
+ if (!next) {
+     // wrap carousel by using first child
+     next = items[0]
+   }
+ let cloneChild = next.cloneNode(true)
+ el.appendChild(cloneChild.children[0])
+ next = next.nextElementSibling
+}
+})
+
+document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+
+
+
+
+<!-- </div> -->
+</html>

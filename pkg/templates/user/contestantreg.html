@@ -1,0 +1,80 @@
+
+{% extends "user/base.html" %}
+{% block content %}
+
+<section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2> <a href="">Peace Ambassador Registration Form</a></h2>
+        <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+      </div>
+
+      <div class="row gx-lg-0 gy-4 mx-auto">
+
+       
+        <div class="col-lg-8 bg-light mx-auto">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form bg-light">
+            <div class="row">
+              <div class="col-md-6 form-group ">
+                <input type="text" name="name" class="form-control" id="name" placeholder="First Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Last Name" required>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group ">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Email" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Phone Number" required>
+                </div>
+              </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Residential Address" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group ">
+                    <select class="form-select" id="inputGroupSelect01">
+                        <option selected>State of Residence</option>
+                        
+                    </select>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <select class="form-select" id="inputGroupSelect01">
+                            <option selected>LGA</option>
+                            
+                        </select>
+                </div>
+              </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="7" placeholder="Brief Introduction of Yourself" required></textarea>
+            </div>
+           
+            <div class="row">
+                <div class="col-md-6 form-group ">
+                  <input type="password" name="name" class="form-control" id="name" placeholder="Enter Password" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="password" class="form-control" name="email" id="email" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="file" class="form-control" id="inputGroupFile02">
+                 
+              </div>
+              <div class="text-center form-group d-flex gap-4">
+                <input type="checkbox">
+                <p>I accept the terms and conditions</p>
+              </div>
+            <div class="text-center form-group"><button type="submit" class="form-control bg-success">Submit</button></div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+  {% endblock content %}

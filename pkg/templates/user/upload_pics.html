@@ -1,0 +1,64 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+
+<section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+            <h2> <a href="">Upload Image</a></h2>
+        </div>
+        {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+        {% if flashed_messages %}
+            {% for category, message in flashed_messages %}
+            <div class="alert {% if category == 'success' %}alert-success{% elif category == 'error' %}alert-danger{% endif %} col-lg-6 mx-auto">
+            {{ message }}
+        </div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+
+
+        <div class="row gx-lg-0 gy-4">
+
+            <div class="col-md-3 form-group mt-3  mx-auto">
+                
+                {{form.pics(class="form-control")}}
+                {% if form.pics.errors %}
+                       <ul>
+                           {% for error in form.pics.errors %}
+                               <li>{{ error }}</li>
+                           {% endfor %}
+                       </ul>
+                   {% endif %}
+             </div>
+             
+        </div>
+        <div class="row gx-lg-0 gy-4 ">
+            <div class="col-md-3 form-group mt-2 mx-auto">
+               <button type="submit" class="btn btn-success mt-5"> {{ form.submit(class="form-control btn contact-btn") }}</button>
+             </div>
+        </div>
+    </form>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+  
+  {% endblock content %}

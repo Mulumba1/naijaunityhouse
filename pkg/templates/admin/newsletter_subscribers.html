@@ -1,0 +1,42 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Newsletter Subscribers</h2>
+       
+    </header>
+    <div><a href="/exit/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div>
+    <section id="team" class="team section-bg">
+        <div class="ror">
+            <div class="col-lg-10 mx-auto">
+                <table class="table table-bordered border-success table-hover">
+                    <thead>
+                        <tr class="table table-dark">
+                            <th>S/No</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                        </tr>
+        
+                    </thead>
+                    {% for subscriber in subscribers %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ subscriber.email }}</td>
+                            <td>{{ subscriber.date_subscribed }}</td>
+                            
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+    </section>
+</div>
+
+{% endblock content %}

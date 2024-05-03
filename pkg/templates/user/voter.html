@@ -1,0 +1,38 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid section-bg">
+<header class="header row">
+    
+    <h2 class="mb-0 p-3 text-center text-white">Vote for your favorite contestant!</h2>
+   
+</header>
+
+<section class=" section-bg">
+<div class="row d-flex justify-content-center gap-4">
+    
+    <div class="col-md-2 section-bg">
+       
+        <img src="/static/pictures/{{ user.user_pics }}"  class="rounded bg-light shadow-lg img-fluid mt-5 h-75" >
+    </div>
+    <div class="col-md-6 p-4 ml-5">
+        
+        <h5>Dear Friend,</h5> 
+        <p >I am <strong>{{user.user_fname}} {{user.user_lname}}</strong>, I am one of the 2024 Peace Ambassador Contestant. A contest that will set me out as one of the peace ambassadors of the Naija Unity Forum, an organisation that is championing for the sustance of Nigeria unity.</p>
+
+        <p>{{user.user_fname}} {{user.user_lname}} is from {{user.userlga.lga_name}} LGA of {{user.userstate.state_name}}. She is contesting for the Naija Unity House 2024 Peace Ambassador. {{user.user_bio}} </p>
+        <p>Pleae click the button to vote for me <button type="submit" class="btn btn-success ml-5"><a href="{{ contestant_link }}" class="text-white">Vote for me</a></button></p>
+
+        
+       
+        
+
+    </div>
+    
+</div>
+</section>
+</div>
+
+    
+{% endblock content %}

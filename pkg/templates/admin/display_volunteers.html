@@ -1,0 +1,62 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Registered Volunteers</h2>
+       
+    </header>
+    <div><a href="/admin/dashboard/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <div class="col-md-4">
+                <form action="/volunteer/search/" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search by State, Email or Name">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <section class="team section-bg">
+        <div class="">
+            <div class="col-lg-10 mx-auto">
+                <table class="table table-bordered border-success table-hover">
+                    <thead>
+                        <tr class="table table-dark">
+                            <th>S/No</th>
+                            <th>Full Name</th>
+                            <th>Phone No</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>State</th>
+                            <th>LGA</th>
+                            <th>Date</th>
+                        </tr>
+        
+                    </thead>
+                    {% for volunteer in volunteer %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td >{{volunteer.volunteer_name }}</td>
+                            <td>{{volunteer.volunteer_phone}}</td>
+                            <td>{{volunteer.volunteer_email}}</td>
+                            <td>{{volunteer.volunteer_address}}</td>
+                            <td>{{volunteer.volstate.state_name}}</td>
+                            <td>{{volunteer.vollga.lga_name}}</td>
+                            <td>{{volunteer.volunteer_datereg}}</td>
+                            
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+    </section>
+</div>
+
+{% endblock content %}

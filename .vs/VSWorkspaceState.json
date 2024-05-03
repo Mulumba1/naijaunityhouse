@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\pkg"
   ],
+  "SelectedNode": "\\pkg\\admin_routes.py",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,71 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+
+<!-- {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+            {% if flashed_messages %}
+                {% for category, message in flashed_messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+                {% endfor %}
+            {% endif %} -->
+
+
+<div class="container-fluid">
+
+    
+
+
+<div class="row section-bg pt-5">
+   
+    <div class="col-md-6 mx-auto p-3">
+        <h5 class="">Dear {{session.get('user_name')}},</h5>
+
+
+
+        
+        <p>Congratulations on your registration.  Naija Unity House Reality Television Show is aimed at promoting unity among Nigerian Youths. We bring youths from different ethnic backgrounds together to delibrate on what we can benefit from our diversity as a way to foster peaceful co-existance </p>
+        <p>The selection pannel will invit all applicants for an audition and successful candidates will be contacted via mail submitted during registration</p>
+        <p>You're therefore expected to prepare your elevator speech which you will present to the screening board. You're also advised to start talking to your fans who will be your voting stronghold.</p>
+        <p>Please upload your picture to complete your registration.</p>
+        <p>Best regards,</p>
+        <p>Management</p>
+        <button class="btn btn-success mb-5"><a href="/uploadpics/" class="text-white">Click here to upload your picture</a></button>
+       
+        
+    </div>
+    
+    
+   
+    
+    
+    
+    
+       
+    
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+            {% endblock content %}
+
+

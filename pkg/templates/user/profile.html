@@ -1,0 +1,73 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+<div class="container-fluid section-bg">
+    <header class="header row">
+    <div class="col-md-10"><h2 class="mb-0 p-3 text-center text-white">Contestant Profile</h2>
+    </div>
+    <div class="col-md-2 mt-4">
+        <button class=" btn btn-danger"><a href="/logout/" class="text-white">Logout</a></button>
+      </div>
+        
+    </header>
+    <div class="row d-flex justify-content-end mt-3">
+        <div class="col-md-4">
+            
+     <div class="input-group">
+        <form method="post" action="{{ confirm_registration_url }}">
+             
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-success">Print Confirmation of Registration</button>
+        </form>
+                    
+                    
+        </div>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 mx-auto pt-5">
+            {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+            {% if flashed_messages %}
+                {% for category, message in flashed_messages %}
+                    <div class="alert {% if category == 'success' %}alert-success{% elif category == 'error' %}alert-danger{% endif %} col-lg-6 mx-auto">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    
+   
+
+
+
+
+<section class="section-bg">
+   
+    <div class="row d-flex mx-auto gap-5">
+        
+       
+        <div class="col-md-4 ml-lg-5">
+            <img src="/static/pictures/{{ user.user_pics }}"
+            class="about-image ms-lg-auto bg-light shadow-lg img-fluid ml-lg-5" alt=""> 
+        </div>
+        <div class="col-md-6"><h2 class="mb-0 p-3 text-center">{{ user.user_fname }} {{ user.user_lname }}</h2>
+            <h5 class="text-muted text-center mb-md-4">REF No: <strong>{{user.user_ref}}</strong></h5>
+            
+    
+            <p class="pt-5 text-center">{{user.user_bio}}</p>
+                    <p class="text-center">Contestant Link: <a href="{{ contestant_link }}">{{ contestant_link }}</a></p>
+                    
+                  <h1 class="text-dark text-center">Your Total Vote is:  {{user.user_vote}}</h1>
+                  <p class="p-3 text-center"><strong>Click to view other contestants votes</strong>
+                  <button class="btn btn-success"><a href="/other/contestants" class="text-white">View</a></button>
+            </div>
+            
+    </div>
+   
+</section>
+   
+</div> 
+{% endblock content %}

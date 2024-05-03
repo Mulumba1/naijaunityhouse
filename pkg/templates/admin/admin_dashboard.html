@@ -1,0 +1,73 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Admin Dashboard</h2>
+       
+    </header>
+    <section id="team" class="team section-bg">
+       
+
+
+        <div class="col-lg-6 col-12 mx-auto">
+           
+            <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
+               
+
+                
+
+                <div class="d-flex justify-content-around">
+                    <div>
+                        
+                        <a href="/admin/logout/"><i class="fas fa-sign-out-alt fa-4x"></i>
+                            <h6>Log out</h6></a>
+                        
+
+                    </div>
+                    <div>
+                        <a href="/contestants/votes/"><i class="fas fa-newspaper newspaper-icon fa-4x"></i>
+                            <h6 class="text-center">Vote Standing</h6></a>
+                    </div>
+                    <div>
+                        <a href="/users/profile/"><i class="fas fa-users users-icon fa-4x"></i>
+                            <h6 class="text-center">Contestants</h6></a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around mt-5">
+                    <div>
+                        <a href="/contact/details/"><i class="fas fa-address-book contacts-icon fa-4x"></i>
+                            <h6 class="text-center">Contacts</h6></a>
+                    </div>
+                    <div>
+                        <a href="/volunteer/details/"><i class="fas fa-users users-icon fa-4x"></i>
+                            <h6 class="text-center">Volunteers</h6></a>
+                    </div>
+                    <div>
+                        <a href="/newsletter/subscribers/"><i class="fas fa-newspaper newspaper-icon fa-4x"></i>
+                            <h6 class="text-center">Newsletter Subscribers</h6></a>
+                    </div>
+                    
+                </div>
+                <div class="d-flex justify-content-around mt-5">
+                    <div>
+                        <a href="/payment/list/"><i class="fas fa-newspaper newspaper-icon fa-4x"></i>
+                            <h6 class="text-center">Payment Details</h6></a>
+                    </div>
+                </div>
+                
+                   
+                   
+
+                    
+               
+
+               
+
+                    
+            </form> 
+        </div>
+    </section>
+</div>
+{% endblock content %}

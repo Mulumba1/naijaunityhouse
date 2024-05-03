@@ -6,7 +6,7 @@
 
     <div class="section-header">
       <h2> <a href="/contact/">Contact Us</a></h2>
-      <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+      
     </div>
 
     <div class="row gx-lg-0 gy-4">
@@ -28,7 +28,7 @@
           <div class="info-item d-flex bg-success">
               
             <div>
-              <h5 class="text-center text-white">  <i class="fas fa-envelope fa-2x fa-2x"></i>&nbsp;&nbsp;info@naijaunityforum.com </h5>
+              <h5 class="text-center text-white">  <i class="fas fa-envelope fa-2x fa-2x"></i>&nbsp;&nbsp;info@naijaunityhouse.org </h5>
             </div>
 
             
@@ -37,7 +37,7 @@
           <div class="info-item d-flex bg-success">
               
               <div>
-                <h5 class="text-center text-white">  <i class="fas fa-envelope fa-2x fa-2x"></i>&nbsp;&nbsp; +2348039700390 </h5>
+                <h5 class="text-center text-white">  <i class="fas fa-phone fa-2x"></i>&nbsp;&nbsp; +2348039700390 </h5>
               </div>
 
               
@@ -57,27 +57,32 @@
       </div>
 
       <div class="col-lg-8 bg-light">
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form bg-light">
+        <form action="" method="post" role="" class="php-email-form bg-light">
+          {{ form.csrf_token }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <div class="row">
-            <div class="col-md-6 form-group ">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-            </div>
+                <div class="col-md-6 form-group ">
+                  {{form.name(class="form-control")}}
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  {{form.email(class="form-control")}}
+                </div>
           </div>
+          <div class="row">
+                <div class="col-md-6 form-group mt-3">
+                  {{form.phone(class="form-control")}}
+                </div>
+                <div class="col-md-6 form-group mt-3">
+                  {{form.subject(class="form-control")}}
+                </div>
+          </div>
+          
+          
           <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            {{form.message(class="form-control")}}
           </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          <div class="text-center form-group"><button type="submit" class="form-control bg-success">Send Message</button></div>
+          
+          {{form.submit(class="form-control btn btn-success")}}
         </form>
       </div><!-- End Contact Form -->
 

@@ -1,0 +1,82 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+<div class="container-fluid section-bg">
+    <header class="header row">
+        
+        <h2 class="mb-0 p-3 text-center text-white">Contestant Profile</h2>
+      
+      
+    </header>
+   <div class="row"><a href="/exit/"><i class="fas fa-arrow-left"></i>
+    <span><strong>Back</strong></span></a>
+    </div>
+    <div class="row d-flex justify-content-end">
+        <div class="col-md-4">
+            <form action="/contestant/search/" method="GET" class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Search by Ref No, Email, First Name, Last Name">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<section id="team" class="team section-bg">
+   
+    <div class="row d-flex mx-auto gap-5">
+        
+        {% for user in user %}
+        <div class="col-md-4"><img src="/static/pictures/{{ user.user_pics }}"
+            class="about-image ms-lg-auto bg-light shadow-lg img-fluid ml-lg-5" alt="">
+        </div>
+        <div class="col-md-6"><h2 class="mb-0 p-3 text-center">{{ user.user_fname }} {{ user.user_lname }} {{ user.user_othername }}</h2>
+            <h5 class="text-muted text-center mb-md-4">REF No: <strong>{{user.user_ref}}</strong></h5>
+            <p class="p-4"><strong>{{user.user_bio}}</strong></p>
+            <table class="table table-borderless">
+                <tbody>
+                   <tr>
+                    <th>Email:</th>
+                    <td><strong>{{user.user_email}}</strong></td>
+                   </tr>
+                   <tr>
+                    <th>Phone:</th>
+                    <td><strong>{{user.user_phone}}</strong></td>
+                   </tr>
+                   <tr>
+                    <th>Address:</th>
+                    <td><strong>{{user.user_address}}</strong></td>
+                   </tr>
+                   <tr>
+                    <th>LGA:</th>
+                    <td><strong>{{user.userlga.lga_name}}</strong></td>
+                   </tr>
+                   <tr>
+                    <th>State:</th>
+                    <td><strong>{{user.userstate.state_name}}</strong></td>
+                   </tr>
+                   <th>Status:</th>
+                    <td class=""><button class="btn btn-success"><strong>Selected</strong></button></td>
+                   </tr>
+                   <tr>
+                    <th>Number of Votes:</th>
+                    <td class="text-danger"><button class="btn btn-danger"><strong>{{user.user_vote}}</strong></button></td>
+                   </tr>
+                       
+                    
+                </tbody>
+            </table>
+           
+           
+                
+    
+            </div>
+            <hr>
+            {% endfor %}
+           
+    </div>
+   
+</section>
+   
+</div> 
+{% endblock content %}

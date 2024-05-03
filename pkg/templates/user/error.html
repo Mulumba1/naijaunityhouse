@@ -1,0 +1,25 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Page Not Found</h2>
+       
+    </header>
+    <section class=" section-bg section-padding" id="section_4">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h4> Sorry what you were looking for is just not there.</h4>
+                    <p><a href="{{ url_for('home') }}">Return to home Page</a></p>
+            </div>
+        </div>
+    </section>
+
+    
+     
+</div>
+
+
+{% endblock content %}

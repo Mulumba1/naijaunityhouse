@@ -1,0 +1,30 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Donation</h2>
+       
+    </header>
+
+<section id="team" class="team section-bg">
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
+                <form action="{{ buy_book }}" method="post" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="email" placeholder="Enter your Email">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-primary">Buy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+</section>
+</div>
+
+    {% endblock content %}

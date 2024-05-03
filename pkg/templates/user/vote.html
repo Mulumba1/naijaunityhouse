@@ -1,0 +1,112 @@
+{% extends "user/base.html" %}
+{% block content %}
+<!-- <div class="row">
+    <div>
+        <h1>Vote for Your Favorite Contestant</h1>
+        <form id="voteForm">
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId">
+            <button type="button" onclick="submitVote()">Vote</button>
+        </form>
+        <p id="message"></p>
+    </div>
+</div> -->
+
+
+<section id="team" class="team section-bg">
+    <div class="row d-flex mx-auto gap-5">
+        <div class="col-md-4"><img src="/static/images/pix12.png"
+            class="about-image ms-lg-auto bg-light shadow-lg img-fluid ml-lg-5" alt="">
+        </div>
+        <div class="col-md-6"><h2 class="mb-0 p-3 text-center">Bar Beauty Odiaka</h2>
+            <h5 class="text-muted text-center mb-md-4">Our Founder</h5>
+            
+    
+            <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional
+                charity theme based</p>
+    
+            <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus</p>
+            <p>
+                Oluyemi Oluleke Osinbajo GCON (born 8 March 1957) is a Nigerian lawyer, professor, and politician who served as the 14th vice president of Nigeria from 2015 to 2023.[1] A member of the All Progressives Congress (APC), he previously served as Attorney General of Lagos State from 1999 to 2007 and holds the title of Senior Advocate of Nigeria.</p>
+                <ul class="social-icon mt-4 gap-5">
+                    <a href=""><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href=""><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href=""><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href=""><i class="fab fa-linkedin fa-2x"></i></a>
+                </ul>
+            </div>
+    </div>
+</section>
+
+
+<div class="row">
+    <div class="col-lg-8 mx-auto btns">
+        <h1>Vote: <span id="counter">0</span></h1>
+        <button class="increment-btn" data-increment="1">Vote</button>
+    </div>
+</div>
+
+
+
+               
+<script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- <script>
+    $(document).ready(function(){
+        $('#voteBtn').click(function(){
+            $.post('/vote/count/', function(data){
+                $('#counter').text(data.countervc );
+            });
+        });
+    });
+</script> -->
+
+<script>
+    const counterElement = document.getElementById("counter");
+    const voteButton = document.querySelector(".increment-btn");
+
+    function updateCounter(count) {
+        counterElement.textContent = count;
+    }
+
+    voteButton.addEventListener("click", function () {
+        const increment = parseInt(voteButton.getAttribute("data-increment"));
+        updateCounter(parseInt(counterElement.textContent) + increment);
+        // Make a POST request to update the vote count
+        fetch('/vote/1/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ vote_count: increment })
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error('Failed to update vote count.');
+                // Handle error if needed
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error if needed
+        });
+    });
+
+    // Fetch initial vote count from the server
+    fetch('/get_vote_count')
+    .then(response => response.json())
+    .then(data => {
+        updateCounter(data.counter);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error if needed
+    });
+</script>
+
+
+{% endblock content %}
+
+
+   

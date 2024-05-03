@@ -3,10 +3,18 @@ from wtforms import StringField, SubmitField,EmailField, TextAreaField
 from wtforms.validators import DataRequired,Email
 
 
+class InitialCapitalStringField(StringField):
+    def process_formdata(self, valuelist):
+        if valuelist:
+            self.data = valuelist[0].strip().title()
+        else:
+            self.data = ''
+
+
 class ContactForm(FlaskForm):
-    fname = StringField('First name', validators=[DataRequired()])
-    lname = StringField('Last name', validators=[DataRequired()])
-    email = EmailField('Email', validators=[DataRequired(), Email()])
-    phone = StringField('Phone Number', validators=[DataRequired()])
-    message = TextAreaField('Message', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    name = InitialCapitalStringField('Name', render_kw={"placeholder": "Enter your Full Name"}, validators=[DataRequired()])
+    email = EmailField('Email', render_kw={"placeholder": "Enter your email"},validators=[DataRequired()])
+    phone = StringField('Phone Number', render_kw={"placeholder": "Enter your phone number"})
+    subject = StringField('Subject', render_kw={"placeholder": "Subject"})
+    message = TextAreaField('Message',render_kw={"placeholder":"Type your message","rows": "7",}, validators=[DataRequired()])
+    submit = SubmitField('Send Message')

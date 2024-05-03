@@ -1,0 +1,56 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+    
+        <h2 class="mb-0 p-3 text-center text-white">Contact details</h2>
+       
+    </header>
+    <div><a href="/exit/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div> 
+    <section id="team" class="team section-bg">
+        <div class="ror">
+            <div class="col-lg-10 mx-auto">
+                <table class="table table-bordered border-success table-hover">
+                    <thead>
+                        <tr class="table table-dark">
+                            <th>S/No</th>
+                            <th>Name</th>
+                            <th>Phone No</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+        
+                    </thead>
+                    {% for contact in contact %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td >{{contact.contact_name }}</td>
+                            <td>{{contact.contact_phone}}</td>
+                            <td>{{contact.contact_email}}</td>
+                            <td>{{contact.contact_subject}}</td>
+                            <td>{{contact.contact_message}}</td>
+                            <td>{{contact.contact_date}}</td>
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+    </section>
+</div>
+<div>
+    
+    <p>Please dear friends, I am contesting for the Naija Unity House Peace Ambassador, please click the button to vote for me <button type="submit" class="btn btn-success"><a href="{{ contestant_link }}" class="text-white">Vote for me</a></button></p>
+
+    
+
+
+</div>
+{% endblock content %}

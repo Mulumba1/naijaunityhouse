@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Summary</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+    <link href="/static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font_awesome/css/all.css') }}" rel="stylesheet">
+</head>
+<body>
+    
+<div class="container-fluid">
+
+
+<div class="row bg-success d-flex gap-4">
+    
+        <h5 class="text-white p-3">
+            Naija Unity House <br>
+            <small>Initiative for Fostering Unity in our diversity</small>
+          </h5>
+  
+</div>
+  <hr style="border: 2px solid black;">
+  <div class="row d-flex justify-content-end">
+    
+  </div>
+  <div class="form-group">
+    <h4 class="text-center"><u>Confirmation of Registration</u></h4>
+   
+  </div>
+  <div class="row mx-auto d-flex justify-content-center">
+    
+    <div class="col-md-2 pt-2 mx-auto d-flex justify-content-center"><img src="/static/pictures/{{user.user_pics }}" alt="..." style="max-height: 150px; max-width: 150px;" class="rounded">
+  </div>
+ 
+
+  <div class="row mt-3">
+        <div class="col-md-10 form-group mx-auto">
+        <h5 class="">Dear {{details.user_fname }},</h5>
+        <p>1. Congratulations on your registration. Naija unity house reality Television show is aimed at promoting unity in Nigeria regardless of our ethnic differences.To serve as an advisory body in checkmating the activities of Governance. We bring youths from different ethnic backgrounds together to delibrate on what we can benefit from our diversity as a way to foster peaceful co-existance </p>
+        <p>2. The selection pannel will invit all applicants for an audition and successful candidates will be contacted via mail submitted during registration. You're therefore expected to prepare your elevator speech which you will present to the screening board. You're also advised to start talking to your fans who will be your voting stronghold.</p>
+
+        <p>3. Below are the details of your registration:
+        <ul>
+        <li><strong>Name:&nbsp;&nbsp;{{details.user_fname }} {{details.user_lname }} {{details.user_othername }}</strong></li>
+        <li><strong>Email:&nbsp;&nbsp;{{ details.user_email }}</strong></li>
+        <li><strong>Phone:&nbsp;&nbsp;{{ details.user_phone }}</strong></li>
+        <li><strong>Ref No:&nbsp;&nbsp;{{details.user_ref }}</strong></li>
+        </ul>
+        </p>
+        <p>4. Accept the esteemed regards of the Executive Director</p>
+        <p class="pt-2">Yours in Nationl building</p>
+        <h6>Beauty Odiaka Esq</h6>
+        <p>Executive Director</p>
+        </div>
+    
+  </div>
+
+
+  
+</div>
+</body>
+</html>

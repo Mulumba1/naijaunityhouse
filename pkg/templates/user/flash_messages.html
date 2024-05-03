@@ -1,0 +1,18 @@
+
+{% extends "user/base.html" %}
+{% block content %}
+
+<section class=" section-bg">
+    <div class="row d-flex justify-content-center">
+        {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+        {% if flashed_messages %}
+            {% for category, message in flashed_messages %}
+        <div class="alert alert-{{ category }} col-lg-6 mx-auto">
+            {{ message }}
+        </div>
+            {% endfor %}
+        {% endif %}
+
+</div>
+</section>
+{% endblock content %}

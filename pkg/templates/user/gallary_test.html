@@ -1,0 +1,185 @@
+
+{% extends "user/base.html" %}
+
+{% block content %}
+<!-- ======= Portfolio Section ======= -->
+<header class="header row">
+    
+    <h2 class="mb-0 p-3 text-center text-white">Our Past Events</h2>
+   
+</header>
+<section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+      
+
+      
+
+      <div class="row portfolio-container">
+
+        <div class="row mb-5">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="portfolio-wrap">
+                  <img src="/static/images/pix20.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Senator Shetima and other invited guest cutting of inauguration  cake</h4>
+                    
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="portfolio-wrap">
+                  <img src="/static/images/pix21.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Cross section of guest during the inauguration ceremoney</h4>
+                    
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="portfolio-wrap">
+                  <img src="/static/images/pix22.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Dr Osas flagged by the Founder Bar Beauty Odiaka during the launching of our Book</h4>
+                    
+                  </div>
+                </div>
+              </div>
+        </div>
+<div class="row mb-5">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="/static/images/pix23.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Media briefing after the inauguration ceremoney</h4>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="/static/images/pix24.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>The Founder (middle) flagged by two volunteers</h4>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/static/images/pix25.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>The Founder (middle) flagged by two volunteers</h4>
+                
+              </div>
+            </div>
+          </div>
+      </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/static/images/pix27.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>The Founder (middle) flagged by two volunteers</h4>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/static/images/pix28.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>The Founder (middle) flagged by two volunteers</h4>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+                <video controls>
+                    <source src="ges/video1.mp4" type="video/mp4">
+                </video>/static/ima
+              <div class="portfolio-info">
+                
+              </div>
+            </div>
+          </div>
+          
+        
+
+          
+           
+        
+
+      </div>
+
+    </div>
+
+
+    <div class="video-container">
+        
+    </div>
+  </section><!-- End Portfolio Section -->
+
+
+
+
+  <script>
+        window.addEventListener('load', () => {
+    let portfolioContainer = select('.portfolio-container');
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item'
+      });
+
+      let portfolioFilters = select('#portfolio-flters li', true);
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        portfolioIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+        
+      }, true);
+    }
+
+  });
+
+  /**
+   * Initiate portfolio lightbox 
+   */
+  const portfolioLightbox = GLightbox({
+    selector: '.portfolio-lightbox'
+  });
+
+  /**
+   * Portfolio details slider
+   */
+  new Swiper('.portfolio-details-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+
+  </script>
+
+  
+  
+  {% endblock content %}

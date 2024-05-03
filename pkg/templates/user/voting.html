@@ -1,0 +1,70 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<section class=" section-bg section-padding" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+                {% if flashed_messages %}
+                    {% for category, message in flashed_messages %}
+                        <div class="alert {% if category == 'success' %}alert-success{% elif category == 'error' %}alert-danger{% endif %} col-lg-10 mx-auto">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="row d-flex justify-content-center">
+            
+            <div class="col-lg-6 col-12">
+                <h5>Dear Fellow Nigerian</h5>
+                <p class="text-dark"><strong>We are thrilled to invite you to be a part of something truly special - the Nigeria Unity House reality television show, an initiative by the Naija Unity House organization.</strong></p>
+                <p class="text-dark"><strong>At a time when our beloved nation thrives on unity and solidarity, this show serves as a beacon of hope and harmony, showcasing the incredible diversity and talent that our country has to offer. Through this platform, we aim to celebrate the richness of our culture, foster understanding among our diverse communities, and promote peace and unity across every corner of Nigeria.</strong></p>
+                <p class="text-dark"><strong>Now, more than ever, your voice matters. By casting your vote, you have the power to shape the destiny of our nation's future Peace Ambassador. Every vote counts, and together, we can uplift and empower the next generation of leaders who will strive tirelessly to promote peace, unity, and progress in our beloved country.</strong></p>
+                <p class="text-dark"><strong>Join us on this remarkable journey towards a brighter and more united Nigeria. Together, let's make history and create a legacy of peace and harmony that will resonate for generations to come.</strong></p>
+                <p class="text-dark"><strong>Thank you for your invaluable support and participation.</strong></p>
+
+                
+
+            </div>
+            <form class="volunteer-form mb-5 mb-lg-0 "  method="post"  style="background-color: #f0f8ff;">
+                {{ form.csrf_token }}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="row d-flex justify-content-center ">
+                    <div class="col-lg-3 col-4 mb-5">
+                        {{form.ref(class="form-control")}}
+                        {% if form.ref.errors %}
+                            <ul>
+                                {% for error in form.ref.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-2 col-4 mb-5">
+                        {{form.submit(class="form-control btn btn-success")}}
+                        {% if form.submit.errors %}
+                            <ul>
+                                {% for error in form.submit.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+            
+                   
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+    
+</section>
+
+
+
+{% endblock content %}

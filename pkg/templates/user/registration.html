@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/template/admin/dashboard.html">
+    <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/scrolling-nav.css')}}" rel="stylesheet">
+    <title>Registration</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <a href="/dashboard/">Take me to Admin dashboard</a>
+    {{records}}
+</body>
+</html>

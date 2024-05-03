@@ -1,55 +1,64 @@
 {% extends "user/base.html" %}
 
 {% block content %}
-    
-    <br><br><br>
+
+<section class="volunteer-section section-padding" id="section_4">
     <div class="container">
         <div class="row">
-            <div class="col-mb-3 col-md-12">
-                <div class="text-center"><h1>Login Page</h1></div>
-                <form action="" method="post">
-                    {{ form.csrf_token }}
-                   <div class="form-group">
-                       {{form.username.label(class="form-control-label")}}
-                       {{form.username(class="form-control")}}
-                        
-                    </div>
-                    <div class="form-group">
-                        {{form.email.label(class="form-control-label")}}
-                        {{form.email(class="form-control")}}
-                        <span style="color: red;">
-                            {% if form.email.errors%}
-                                {% for error in form.email.errors%}
-                                    {{error}}
-                                {%endfor%}
-                            {%endif%}
-                        </span>
-                       </div>
-                    <div class="form-group">
-                        {{form.password.label(class="form-control-label")}}
-                        {{form.password(class="form-control")}}
-                       </div>
-                    <div class="form-group">
-                        {{form.confirm_password.label(class="form-control-label")}}
-                        {{form.confirm_password(class="form-control")}}
-                        <span style="color: red;">
-                            {% if form.confirm_password.errors%}
-                                {% for error in form.confirm_password.errors%}
-                                    {{error}}
-                                {%endfor%}
-                            {%endif%}
-                    </div>
-
-                    <div class="form-group">
-                    {{form.submit(class="form-control btn btn-danger")}}
-
-                   </div>
-   
-   
-                </form>
-    
+            <div class="col-md-10 mx-auto">
+                {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+                {% if flashed_messages %}
+                    {% for category, message in flashed_messages %}
+                        <div class="alert {% if category == 'success' %}alert-success{% elif category == 'error' %}alert-danger{% endif %} col-lg-10 mx-auto">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
-    
         </div>
-   </div>
-{% endblock %}
+        <div class="row">
+
+            <div class="col-lg-6 col-12 mx-auto">
+                
+
+                <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                    {{ form.csrf_token }}
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <h3 class="mb-4 text-center"> Contestant Login</h3>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            
+                            {{form.ref(class="form-control")}}
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            {{form.password(class="form-control")}}
+                        </div>
+
+                       </div>
+                       
+         
+                       <div>
+                        {{form.submit(class="form-control btn btn-success")}}
+                       </div>
+                       <p class="text-center">Forget Password? <a href="/reset/password/" class="text-danger">Click here</a></p>
+                </form> 
+            </div>
+
+            
+
+        </div>
+    </div>
+</section> 
+
+
+
+
+
+
+ 
+
+
+
+{% endblock %}

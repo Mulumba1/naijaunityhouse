@@ -10,43 +10,48 @@
                 <h2 class="text-white text-center mb-4">Volunteer </h2>
 
                 <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                    {{ form.csrf_token }}
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <h3 class="mb-4">Become a volunteer today</h3>
 
                     <div class="row">
                         <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control" placeholder="Full Name" required>
+                            
+                            {{form.name(class="form-control")}}
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <input type="email" name="volunteer-email" id="volunteer-email"
-                                 class="form-control" placeholder="Email"
-                                required>
+                            {{form.email(class="form-control")}}
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-subject" id="volunteer-subject"
-                                class="form-control" placeholder="Phone Number" required>
+                            {{form.phone(class="form-control")}}
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-subject" id="volunteer-subject"
-                                class="form-control" placeholder="Residential Address" required>
+                            {{form.address(class="form-control")}}
                         </div>
                         <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control" placeholder="State" required>
+                            <select name="state" id="state" class="form-control">
+                                <option value="">Select State</option>
+                                {% for state in states %}
+                                <option value="{{ state.state_id }}">{{ state.state_name }}</option>
+                                {% endfor %}
+                              </select>
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <input type="email" name="volunteer-email" id="volunteer-email"
-                                 class="form-control" placeholder="LGA"
-                                required>
+                            <select name="lga" id="lga" class="form-control">
+                                <option value="">Select LGA</option>
+                              </select>
                         </div>
                     </div>
 
-                    <!-- <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
-                        placeholder="Comment (Optional)"></textarea> -->
+                    <div>
+                        {{form.submit(class="form-control btn btn-success")}}
+                    </div>
 
-                    <button type="submit" class="form-control">Submit</button>
+                       
                 </form> 
             </div>
 
@@ -57,8 +62,7 @@
                 <div class="custom-block-body text-center">
                     <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
 
-                    <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm
-                        tokito Professional charity theme based</p>
+                    <p class="text-white">As a volunteer with Naija Unity House, you become a peace ambassador in your local area. You play a vital role in building and promoting peace, ensuring that alternative dispute resolution methods are employed to resolve conflicts peacefully.</p>
                 </div>
             </div>
 

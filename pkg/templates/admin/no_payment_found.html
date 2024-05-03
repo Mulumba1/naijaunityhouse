@@ -1,0 +1,29 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<div class="container-fluid section-bg">
+    <header class="header row">
+        <h2 class="mb-0 p-3 text-center text-white">Payment List</h2>
+    </header>
+    <div class="row"><a href="/payment/list/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <div class="col-md-4">
+                <form action="/contestant/search/" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search by Payment Ref No, Payment Plan or Name">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    <section id="team" class="team section-bg">
+        <div class="col-md-8 mx-auto">
+            <h6><strong>{{ message }}</strong></h6> 
+            <h6>Please try a different search query or <a href="/payment/search/">go back to the search page</a>.</h6>
+        </div>
+    </section>
+</div>
+{% endblock content %}

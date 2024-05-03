@@ -1,21 +1,71 @@
 {% extends "user/base.html" %}
 
 {% block content %}
-<section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>About Us page</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
-        </div>
+
+<section class="section-bg" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>About Us</h2>
+        <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+        <ul>
+          <li>Clickable nav links that smooth scroll to page sections</li>
+          <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+          <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+          <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="section-padding section-bg" >
+  <div class="container">
+      <div class="row">
+
+          <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+              <img src="/static/images/pix11.png"
+                  class="custom-text-box-image img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 col-12">
+              <div class="custom-text-box">
+                  <h2 class="mb-2">Our Story</h2>
+
+                  <h5 class="mb-3">Naija Unity Forum, Initiative for forstering unity in Nigeria</h5>
+
+                  <p class="mb-0">This is a Bootstrap 5.2.2 CSS template for charity organization websites.
+                      You can feel free to use it. Please tell your friends about TemplateMo website. Thank
+                      you.</p>
+              </div>
+
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-12">
+                      <div class="custom-text-box mb-lg-0">
+                          <h5 class="mb-3">Our Mission</h5>
+
+                          <p><strong>To explore the tools of entertainment as a platform that reinforces the value of unity in diversity with a view to enhance  national cohesion, stability and growth.</strong></p>
+
+                          
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="custom-text-box mb-lg-0">
+                        <h5 class="mb-3">Our Vision</h5>
+
+                        <p><strong>To explore the tools of entertainment as a platform that reinforces the value of unity in diversity with a view to enhance  national cohesion, stability and growth.</strong></p>
+
+                    
+                    </div>
+                </div>
+
+                  
+              </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+
 
 {% endblock %}

@@ -1,0 +1,66 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+<div class="container-fluid section-bg">
+    <header class="header row">
+        
+        <h2 class="mb-0 p-3 text-center text-white">Payment List</h2>
+      
+      
+    </header>
+    <div><a href="/admin/dashboard/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <div class="col-md-4">
+                <form action="/payment/search/" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search by Payment Ref No, Payment Plan or Name">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <section id="team" class="team section-bg">
+   
+        <div class="row d-flex mx-auto gap-5">
+            <div class="col-lg-10 mx-auto">
+                <table class="table table-bordered border-success table-hover">
+                    <thead>
+                        <tr class="table table-dark">
+                            <th>S/No</th>
+                            <th>First Name</th>
+                            <th>Last Names</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Reference No</th>
+                            <th>Plan</th>
+                        </tr>
+        
+                    </thead>
+                    {% for payment in payment %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td >{{payment.payment_fname }}</td>
+                            <td >{{payment.payment_lname }}</td>
+                            <td >{{payment.payment_email}}</td>
+                            <td>{{payment.payment_phone}}</td>
+                            <td>{{payment.payment_amt}}</td>
+                            <td>{{payment.payment_date}}</td>
+                            <td>{{payment.payment_status}}</td>
+                            <td>{{payment.payment_ref}}</td>
+                            <td>{{payment.payplan.plan_name}}</td>
+                        </tr>
+                      
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

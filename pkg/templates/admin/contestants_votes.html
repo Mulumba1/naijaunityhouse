@@ -1,0 +1,48 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+<div class="container-fluid section-bg">
+    <header class="header row">
+        
+        <h2 class="mb-0 p-3 text-center text-white">Other Contestants</h2>
+      
+      
+    </header>
+    <div><a href="/exit/"><i class="fas fa-arrow-left"></i>
+        <span><strong>Back</strong></span></a>
+        </div>
+
+    <section id="team" class="team section-bg">
+   
+        <div class="row d-flex mx-auto gap-5">
+            <div class="col-lg-10 mx-auto">
+                <table class="table table-bordered border-success table-hover">
+                    <thead>
+                        <tr class="table table-dark">
+                            <th>S/No</th>
+                            <th>First Name</th>
+                            <th>Other Names</th>
+                            <th>Last Name</th>
+                            <th>State</th>
+                            <th>Votes</th>
+                        </tr>
+        
+                    </thead>
+                    {% for user in user %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td >{{user.user_fname }}</td>
+                            <td >{{user.user_othername }}</td>
+                            <td >{{user.user_lname }}</td>
+                            <td>{{user.userstate.state_name}}</td>
+                            <td>{{user.user_vote}}</td>
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

@@ -7,74 +7,230 @@
 
       <div class="section-header">
         <h2> <a href="">Peace Ambassador Registration Form</a></h2>
-        <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
-      </div>
+        </div>
+
+        {% set flashed_messages = get_flashed_messages(with_categories=True) %}
+        {% if flashed_messages %}
+            {% for category, message in flashed_messages %}
+            <div class="alert {% if category == 'success' %}alert-success{% elif category == 'error' %}alert-danger{% endif %} col-lg-6 mx-auto">
+            {{ message }}
+        </div>
+            {% endfor %}
+        {% endif %}
+
 
       <div class="row gx-lg-0 gy-4 mx-auto">
-
+       
        
         <div class="col-lg-8 bg-light mx-auto">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form bg-light">
+          <form  method="POST" role="" class="php-email-form bg-light"  enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="row">
               <div class="col-md-6 form-group ">
-                <input type="text" name="name" class="form-control" id="name" placeholder="First Name" required>
+               
+                {{form.fname(class="form-control")}}
+                {% if form.fname.errors %}
+                    <ul>
+                        {% for error in form.fname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
               </div>
               <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Last Name" required>
+                
+                {{form.lname(class="form-control")}}
+                {% if form.lname.errors %}
+                    <ul>
+                        {% for error in form.lname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                
               </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group ">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Email" required>
+                    <!-- {{form.othername(class="form-control")}} -->
+                    {{form.othername(class="form-control")}}
+                    {% if form.othername.errors %}
+                        <ul>
+                            {% for error in form.othername.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Phone Number" required>
+                <div class="col-md-2 form-group mt-3 mt-md-0">
+                    {{form.dob.label(class="form-control-label")}}
+                    
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                   
+                    {{ form.dob(class="form-control") }}
+                    {% if form.dob.errors %}
+                        <ul>
+                            {% for error in form.dob.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-6 form-group ">
+                    {{form.email(class="form-control")}}
+                    {% if form.email.errors %}
+                        <ul>
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                    {{form.phone(class="form-control")}}
+                    {% if form.phone.errors %}
+                        <ul>
+                            {% for error in form.phone.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+              </div>
+
             <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Residential Address" required>
+                {{form.address(class="form-control")}}
+                {% if form.address.errors %}
+                        <ul>
+                            {% for error in form.address.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
             </div>
             <div class="row">
                 <div class="col-md-6 form-group ">
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>State of Residence</option>
-                        
-                    </select>
+                    
+                      <select name="state" id="state" class="form-control">
+                        <option value="">Select State</option>
+                        {% for state in states %}
+                        <option value="{{ state.state_id }}">{{ state.state_name }}</option>
+                        {% endfor %}
+                      </select>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <select class="form-select" id="inputGroupSelect01">
-                            <option selected>LGA</option>
-                            
-                        </select>
+                    
+                      <select name="lga" id="lga" class="form-control">
+                        <option value="">Select LGA</option>
+                      </select>
                 </div>
               </div>
             <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="7" placeholder="Brief Introduction of Yourself" required></textarea>
+              
+                {{ form.bio(class="form-control") }}
+                {% if form.bio.errors %}
+                        <ul>
+                            {% for error in form.bio.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
             </div>
            
+           
             <div class="row">
-                <div class="col-md-6 form-group ">
-                  <input type="password" name="name" class="form-control" id="name" placeholder="Enter Password" required>
+                <div class="col-md-4 form-group ">
+                  {{ form.password(class_='password-input form-control', id='password') }}
+                  
+                  
+                   
+                    {% if form.password.errors %}
+                      <div class="alert alert-danger">
+                          {% for error in form.password.errors %}
+                              {{ error }}
+                          {% endfor %}
+                      </div>
+                  {% endif %}
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="password" class="form-control" name="email" id="email" placeholder="Confirm Password" required>
+                <div class="col-md-3 form-group">
+                  <button type="button" class="show-password-button form-control" onclick="togglePasswordVisibility()">Show Password</button>
+                </div>
+
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    {{ form.confirm_password(class="form-control", id='confirm_password')}}
+                    {% if form.confirm_password.errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.confirm_password.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
               </div>
-              <div class="form-group mt-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                 
-              </div>
+              
               <div class="text-center form-group d-flex gap-4">
-                <input type="checkbox">
-                <p>I accept the terms and conditions</p>
+                
+                {{ form.check_field(class="form-check-input") }}
+                  {{ form.check_field.label(class="form-check-label") }}
               </div>
-            <div class="text-center form-group"><button type="submit" class="form-control bg-success">Submit</button></div>
+            
+            {{form.submit(class="form-control btn btn-success")}}
           </form>
-        </div><!-- End Contact Form -->
+        </div>
 
       </div>
 
     </div>
   </section><!-- End Contact Section -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script>
+    
+    
+    $('#state').change(function(){
+      var state_id = $(this).val()
+      var csrf = '{{ csrf_token() }}'
+      $.ajax({
+        url: '/state/lgas/',
+        type: 'POST',
+        data: {"state_id":state_id, "csrf_token":csrf},
+        beforeSend: function(){
+          $('#lga').html('')
+        },
+        success: function(resp){
+          $('#lga').append("<option value=''>select LGA</option>")
+          for (let index = 0; index < resp.length; index++){
+            $('#lga').append(`<option value='${resp[index].lga_id}'>${resp[index].lga_name}</option>`);
+          }
+        }
+      })
+    })
+
+
+
+    function togglePasswordVisibility() {
+    var newPasswordInput = document.getElementById("password");
+    var confirmPassInput = document.getElementById("confirm_password");
+
+    // Toggle visibility of new password field
+    if (newPasswordInput.type === "password") {
+        newPasswordInput.type = "text";
+    } else {
+        newPasswordInput.type = "password";
+    }
+
+    // Toggle visibility of confirm password field
+    if (confirmPassInput.type === "password") {
+        confirmPassInput.type = "text";
+    } else {
+        confirmPassInput.type = "password";
+    }
+}
+    
+</script>
 
   {% endblock content %}

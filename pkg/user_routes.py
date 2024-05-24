@@ -55,6 +55,10 @@ def home():
 def about():
     return render_template('user/about.html')
 
+@app.route('/about/continue/')
+def about_continue():
+    return render_template('user/about_continuation.html')
+
 
 @app.route('/contact/', methods=['POST', 'GET'])
 def contact_us():
@@ -167,15 +171,8 @@ def generate_pdf(html_content):
 
 
 
-# @app.route('/checkme/')
-# def checkme():
-#     user = User.query.all()
-#     return render_template('user/contestant_dash.html', user=user)
 
-# @app.route('/user/checkme/')
-# def checkme2():
-#     user = User.query.all()
-#     return render_template('user/reg_summary.html', user=user)
+
 
 @app.route('/team/')
 def our_team ():
@@ -222,60 +219,6 @@ def volunteer ():
 
 
 
-
-
-# @app.route("/contestant/", methods=['POST', 'GET'])
-# def register_contestant():
-#     form = ContestantForm()
-#     states = db.session.query(State).all()
-#     form.state.choices = [(state.state_id, state.state_name) for state in State.query.all()]
-#     form.lga.choices = [(lga.lga_id, lga.lga_name) for lga in Lga.query.all()]
-#     if request.method == 'GET':
-#         return render_template('user/contestantreg.html', states=states, form=form)
-#     else:
-#         if form.validate_on_submit():
-#             fname = form.fname.data
-#             lname = form.lname.data 
-#             othername = form.othername.data
-#             dob = form.dob.data
-#             email = form.email.data
-#             phone = form.phone.data
-#             address = form.address.data
-#             state = form.state.data
-#             lga = form.lga.data
-#             bio = form.bio.data
-#             pics = form.pics.data
-#             password = form.password.data
-#             confirm_password = form.confirm_password.data
-#             hashed_password = generate_password_hash(password)
-
-#             age = calculate_age(dob)
-#             if age < 18:
-            
-#                 flash(f'You must be 18 or older to Participate (Your current age is {age}).', category='error')
-#                 return render_template('user/contestantreg.html', states=states, form=form)
-
-#             current_year = datetime.now().year
-#             user_id = User.query.count() + 1
-#             serial_number = user_id
-#             user_ref = generate_ref_number(current_year, serial_number)
-
-#             new_user = User(user_fname=fname, user_lname=lname, user_othername=othername,user_dob=dob,user_address=address, user_phone=phone,user_email=email,user_pics=pics, user_password=hashed_password,user_state=state, user_lga=lga,user_bio=bio, user_ref=user_ref)
-            
-#             db.session.add(new_user)
-#             db.session.commit()
-#             name = new_user.user_fname
-#             session['user_name'] = name
-#             session['useronline'] = new_user.user_id
-
-#             contestant_link = url_for('voting', user_id=new_user.user_id, _external=True)
-
-#             flash('Registration Successful!', category='success')
-#             return render_template('user/confirmation.html',contestant_link=contestant_link) 
-    
-#         else:
-#             flash('Registration is not successful. Please check your input.', category='error')
-#             return render_template('user/contestantreg.html', states=states, form=form)
         
 
 @app.route("/contestant/", methods=['POST', 'GET'])
@@ -394,40 +337,6 @@ def upload_pics():
 
 
 
-
-
-# @app.route('/confirm_registration/<int:user_id>/')
-# def confirm_registration(user_id):
-#     user = User.query.get(user_id)
-#     if not user:
-#         return "User not found", 404
-
-#     details = {
-#         'user_fname': user.user_fname,
-#         'user_lname': user.user_lname,
-#         'user_othername': user.user_othername,
-#         'user_email': user.user_email,
-#         'user_phone': user.user_phone,
-#         'user_ref': user.user_ref
-#     }
-
-#     rendered_html = render_template('user/reg_summary.html', details=details, user=user)
-#     pdf_io = generate_pdf(rendered_html)
-#     filename = f'registration_confirmation_{user.user_fname}.pdf'
-    
-#     redirect_home = redirect(url_for('home'))
-#     (redirect_home)
-
-#     response = send_file(
-#         pdf_io,
-#         mimetype='application/pdf',
-#         as_attachment=True,
-#         download_name=filename
-#     )
-
-#     response.autocorrect_location_header = False
-#     response.headers['Location'] = url_for('home')
-#     return response
 
 
 @app.route('/confirm_registration/<int:user_id>/', methods=['GET', 'POST'])
@@ -564,144 +473,6 @@ def flash_messages():
     return render_template('user/flash_messages.html')
 
 
-# @app.route('/payment/', methods=['GET', 'POST'])
-# def payment():
-#     form = PaymentForm()
-#     if request.method == 'POST' and form.validate_on_submit():
-#         fname = form.fname.data
-#         lname = form.lname.data
-#         email = form.email.data
-#         phone = form.phone.data
-#         amount = form.amount.data
-        
-
-#         paystack_transaction = PaystackTransaction.initialize(
-#             email=email,
-#             amount=int(amount) * 100, 
-#             reference=f"{fname}-{lname}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-#         )
-
-#         payment = Payment(
-#             payment_fname=fname,
-#             payment_lname=lname,
-#             payment_email=email,
-#             payment_phone=phone,
-#             payment_amt=amount,
-#             payment_ref=paystack_transaction['data']['reference']
-#         )
-#         db.session.add(payment)
-#         db.session.commit()
-#         return redirect(paystack_transaction['data']['authorization_url'])
-
-#     return render_template('user/payment.html', form = form)
-
-
-# @app.route('/paystack/webhook', methods=['POST'])
-# def paystack_webhook():
-#     return '', 200
-
-
-
-
-
-
-
-
-
-
-# @app.route('/payment/', methods=['GET', 'POST'])
-# def payment():
-#     form = PaymentForm()
-#     plans = Plan.query.all()
-#     form.plan.choices = [(plan.plan_id, plan.plan_name) for plan in plans]
-    
-#     if request.method == 'POST' and form.validate_on_submit():
-#         plan_id = form.plan.data
-#         fname = form.fname.data
-#         lname = form.lname.data
-#         email = form.email.data
-#         phone = form.phone.data
-        
-#         plan = Plan.query.get(plan_id)
-#         if not plan:
-#             flash('Invalid plan selected.', 'error')
-#             return redirect(url_for('payment'))
-        
-#         plan_amount = plan.plan_amount
-        
-#         paystack_transaction = PaystackTransaction.initialize(
-#             email=email,
-#             amount=int(plan_amount * 100),  
-#             reference=f"{fname}-{lname}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-#         )
-        
-      
-#         payment = Payment(
-#             payment_fname=fname,
-#             payment_lname=lname,
-#             payment_email=email,
-#             payment_phone=phone,
-#             payment_plan=plan_id,
-#             payment_amt=plan_amount,
-#             payment_ref=paystack_transaction['data']['reference']
-#         )
-        
-   
-#         db.session.add(payment)
-#         db.session.commit()
-        
-        
-#         flash('Payment successful. Thank you for helping us to do more', category='success')
-#         return redirect(paystack_transaction['data']['authorization_url'])
-    
-#     return render_template('user/payment.html', form=form)
-
-
-
-
-# @app.route('/payment/', methods=['GET', 'POST'])
-# def make_payment():
-#     form = PaymentForm()
-#     plans = Plan.query.all()
-#     form.plan.choices = [(plan.plan_id, plan.plan_name) for plan in plans]
-    
-#     if request.method == 'POST' and form.validate_on_submit():
-#         plan_id = form.plan.data
-#         fname = form.fname.data
-#         lname = form.lname.data
-#         email = form.email.data
-#         phone = form.phone.data
-        
-#         plan = Plan.query.get(plan_id)
-#         if not plan:
-#             flash('Invalid plan selected.', 'error')
-#             return redirect(url_for('payment'))
-        
-#         plan_amount = plan.plan_amount
-        
-#         paystack_transaction = PaystackTransaction.initialize(
-#             email=email,
-#             amount=int(plan_amount * 100),  
-#             reference=f"{fname}-{lname}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-#         )
-      
-#         payment = Payment(
-#             payment_fname=fname,
-#             payment_lname=lname,
-#             payment_email=email,
-#             payment_phone=phone,
-#             payment_plan=plan_id,
-#             payment_amt=plan_amount,
-#             payment_ref=paystack_transaction['data']['reference']
-#         )
-        
-#         db.session.add(payment)
-#         db.session.commit()
-        
-#         flash('Payment successful. Thank you for helping us to do more', category='success')
-#         return redirect(paystack_transaction['data']['authorization_url'])
-    
-#     return render_template('user/payment.html', form=form)
 
 
 @app.route('/payment/', methods=['GET', 'POST'])
@@ -750,23 +521,6 @@ def make_payment():
 
 
 
-# @app.route('/paystack/webhook', methods=['POST'])
-# def paystack_webhook():
-#     data = request.get_json(force=True)  
-#     payment_ref = data.get('reference')
-#     payment_status = data.get('status')
-#     payment = Payment.query.filter_by(payment_ref=payment_ref).first()
-    
-#     if payment:
-#         if payment_status == 'success':
-#             payment.payment_status = 'paid'
-#         elif payment_status == 'failed':
-#             payment.payment_status = 'failed'
-#         db.session.commit()
-        
-        
-#     else:
-#         return jsonify({'error': 'Payment not found'}), 404
 
 @app.route('/paystack/webhook', methods=['POST'])
 def paystack_webhook():
@@ -789,52 +543,6 @@ def paystack_webhook():
 
 
 
-# @app.route('/paystack/webhook', methods=['POST'])
-# def paystack_webhook():
-#     data = request.get_json(force=True)  
-#     payment_ref = data.get('reference')
-#     payment_status = data.get('status')
-#     payment = Payment.query.filter_by(payment_ref=payment_ref).first()
-    
-#     if payment:
-#         if payment_status == 'success':
-#             payment.payment_status = 'paid'
-#             db.session.commit()
-#             return redirect(url_for('voting'))  
-#         elif payment_status == 'failed':
-#             payment.payment_status = 'failed'
-#             db.session.commit()
-#             return redirect('/payment/failed')
-#     else:
-#         return jsonify({'error': 'Payment not found'}), 404
-
-
-
-
-# @app.route("/paylanding/")
-# def paylanding():
-#     payment_id = session.get('useronline')  
-#     trxref = request.args.get('trxref') 
-#     if session.get('reference') is not None and str(trxref) == str(session.get('reference')):
-#         url = "https://api.paystack.co/transaction/verify/" + str(session.get('reference'))
-#         headers = {
-#             "Content-Type": "application/json",
-#             "Authorization": "Bearer sk_test_ead50eacadfcfa37f1e5f65f95551db34e36513b"
-#         }
-
-#         response = requests.get(url, headers=headers)
-#         rsp = response.json()
-
-#         return jsonify(rsp)
-#     else:
-#         return "Transaction verification failed. Please start again."
-
-
-
-
-
-
-
 
 
 @app.route('/plan/', methods=['POST'])
@@ -849,80 +557,6 @@ def get_plan():
         'plan_amount': plan.plan_amount
     })
 
-
-# @app.route("/topaystack/", methods=['POST','GET'])
-# def topaystack():
-#     form = PaymentForm()
-#     plans = Plan.query.all()
-#     form.plan.choices = [(plan.plan_id, plan.plan_name) for plan in plans]
-    
-#     if request.method == 'POST' and form.validate_on_submit():
-#         plan_id = form.plan.data
-#         fname = form.fname.data
-#         lname = form.lname.data
-#         email = form.email.data
-#         phone = form.phone.data
-        
-        
-#         plan = Plan.query.get(plan_id)
-#         if not plan:
-#             flash('Invalid plan selected.', 'error')
-#             return redirect(url_for('payment'))
-        
-        
-#         ref = session.get('ref')
-#         if not ref:
-#             flash("Start the payment process again.", 'error')
-#             return redirect('/payment/')
-        
-        
-#         payment = Payment.query.filter(Payment.payment_ref == ref).first()
-#         if not payment:
-#             flash("Payment details not found.", 'error')
-#             return redirect('/payment/')
-        
-        
-#         url = "https://api.paystack.co/transaction/initialize"
-#         headers = {
-#             "Content-Type": "application/json",
-#             "Authorization": "Bearer sk_test_ead50eacadfcfa37f1e5f65f95551db34e36513b"
-#         }
-#         data = {
-#             'email': payment.payment_email,
-#             'amount': int(payment.payment_amt * 100),
-#             'reference': ref
-#         }
-        
-        
-#         response = requests.post(url, headers=headers, data=json.dumps(data))
-#         rspjson = response.json()
-        
-#         if rspjson and rspjson.get('status') == True:
-#             authurl = rspjson['data']['authorization_url']
-#             return redirect(authurl)
-#         else:
-#             flash(rspjson.get('message', 'Failed to initialize payment.'), 'error')
-#             return redirect('/payment/')
-    
-#     return redirect('/payment/')
-
-
-# @app.route('/toconfirm/')
-# def to_confirm():
-#     id = session.get('useronline')
-#     ref = session.get('ref')
-    
-#     if ref:
-#         payment = Payment.query.filter(Payment.payment_ref == ref).first()
-        
-#         if payment:
-#             return render_template('user/contestantreg.html', payment=payment)
-#         else:
-#             flash('Payment details not found. Please start the transaction again.', 'error')
-#             return redirect('/payment/')
-#     else:
-#         flash('Please start the transaction again.', 'error')
-#         return redirect('/payment/')
 
 
 @app.errorhandler(ValueError)
@@ -966,7 +600,7 @@ def buy_book():
             flash('Please buy our book to proceed.', category='error')
             return redirect(url_for('make_payment'))  
 
-    return render_template('user/buy_book.html')
+    return render_template('user/books.html')
     
 
 

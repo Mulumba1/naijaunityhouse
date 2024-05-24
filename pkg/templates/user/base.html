@@ -21,14 +21,127 @@
     <link href="/static/css/main.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='font_awesome/css/all.css') }}" rel="stylesheet">
 <style>
+    .mobilenav{
+        display: none;
+    }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .carousel-inner .carousel-item > div {
         display: none;
     }
     .carousel-inner .carousel-item > div:first-child {
         display: block;
     }
+
+    #navbarNav{
+        display: none;
+    }
+    .mobilenav{
+        display: block;
+        padding: 10px 10px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .site-header{
+        display: none;
+    }
+    .mobilecontainer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 0 10px; */
+    }
+    .mobilelogo{
+        width: 30px;
+    }
+    .harmbuger{
+        border: none;
+    }
+    .mobilemenu{
+        list-style-type: none;
+    }
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.5rem;
+}
+
+.hamburger {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+.bar1.change {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.bar2.change {
+    opacity: 0;
+}
+
+.bar3.change {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #198452;
+    padding: 50px 20px;
+    transition: left 0.4s ease;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: 15px;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.menu-open {
+    left: 0;
+}
+
+.sticky-wrapper{
+        height: 0px !important;
+        /* height: 893px; */
+    }
+
+
 }
 
 
@@ -61,38 +174,10 @@
 }
 
 
-    @media screen and (max-width: 375px) {
-        .sticky-wrapper{
-        height: 10px !important;
-        /* height: 893px; */
-    }
-    .site-header{
-        display: none;
-    }
-    .navi{
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-        padding: 10px;
-        color: red;
-
-    }
-}
-
-
-    @media screen and (max-width: 1024px) {
-    .navi{
-        display: none;
-    }
-    }
 
 </style>
 </head>
-<!-- <div class="container-fluid"> -->
-    <div class="vavi">
-        <img src="/static/images/pix10.png" class="logo img-fluid rounded-circle" alt="">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-    </div>
+
 <header class="site-header bg-dark">
   <div class="container">
       <div class="row">
@@ -154,18 +239,13 @@
 
 <nav class="navbar navbar-expand-lg bg-success shadow-lg">
   <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="/">
           <img src="/static/images/pix10.png" class="logo img-fluid rounded-circle" alt="">&nbsp;&nbsp;
           <span class="text-white">
               Naija Unity House
               <small>Initiative for Fostering Unity in our diversity</small>
           </span>
       </a>
-
-      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button> -->
 
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
@@ -201,14 +281,66 @@
                 {% if session.get('useronline') == None %}
                 <a class="nav-link click-scroll text-white" href="/login/">Login</a>
                 {% else %}
-                <a class="nav-link click-scroll text-white" href="/dashboard/">dashboard</a>
+                <a class="nav-link click-scroll text-white" href="/logout/">Logout</a>
                  {% endif %}
               </li>
-
-
-              
           </ul>
       </div>
+  </div>
+</nav>
+<!-- mobile menu view -->
+<nav class="navbar-expand-lg bg-success shadow-lg mobilenav">
+  <div class="mobilecontainer">
+      <a class="navbar-brand" href="/">
+          <img src="/static/images/pix10.png" class="logo mobilelogo img-fluid rounded-circle" alt="">&nbsp;&nbsp;
+      </a>
+      <div class="navbars">
+        <div class="navbar-container">
+            <button class="hamburger" id="hamburger">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </button>
+        </div>
+    </div>
+    <div class="menu" id="menu">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link click-scroll text-white" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link click-scroll text-white" href="/about/">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link click-scroll text-white" href="/voting/">Voting</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link click-scroll text-white" href="/user/gallary/">Gallary</a>
+          </li>
+
+            <li class="nav-item">
+                <a class="nav-link click-scroll text-white" href="/team/">Team</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link click-scroll text-white" href="/volunteer/">Volunteer</a>
+          </li>
+            
+            <li class="nav-item">
+                <a class="nav-link click-scroll text-white" href="/contact/">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link click-scroll text-white" href="/admin/login/">Admin</a>
+          </li>
+            <li class="nav-item">
+              {% if session.get('useronline') == None %}
+              <a class="nav-link click-scroll text-white" href="/login/">Login</a>
+              {% else %}
+              <a class="nav-link click-scroll text-white" href="/logout/">Logout</a>
+               {% endif %}
+            </li>
+        </ul>
+    </div>
   </div>
 </nav>
 
@@ -338,6 +470,24 @@ for (var i=1; i<minPerSlide; i++) {
 })
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', function() {
+        menu.classList.toggle('menu-open');
+        toggleHamburger();
+    });
+
+    function toggleHamburger() {
+        const bars = document.querySelectorAll('.bar');
+        bars.forEach(bar => {
+            bar.classList.toggle('change');
+        });
+    }
+});
+
 </script>
 
 
